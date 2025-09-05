@@ -21,8 +21,8 @@ logs/
 # Build outputs
 dist/
 build/
-.client/dist/
-.server/dist/
+client/dist/
+server/dist/
 
 # IDE files
 .vscode/
@@ -36,3 +36,10 @@ Thumbs.db
 
 # ESLint cache
 .eslintcache
+
+# Optional extras
+coverage/
+*.pem
+*.key
+*.zip
+*.tar
