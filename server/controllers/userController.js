@@ -6,7 +6,7 @@ import twilio from "twilio";
 import { sendToken } from "../utils/sendToken.js";
 import crypto from "crypto";
 
-const client = twilio("AC0f26ec82bf1a0c0debb7deed90e0ac6d", "04f52b3216a1c0d79959f09308b5605a");
+const client = twilio(process.env.TWILIO_SID, process.env.TWILIO_AUTH_TOKEN);
 
 export const register = catchAsyncError(async (req, res, next) => {
   try {
@@ -102,7 +102,7 @@ async function sendVerificationCode(
         .join(" ");
       await client.calls.create({
         twiml: `<Response><Say>Your verification code is ${verificationCodeWithSpace}. Your verification code is ${verificationCodeWithSpace}.</Say></Response>`,
-        from: +17089192953,
+        from: process.env.TWILIO_PHONE_NUMBER,
         to: phone,
       });
       res.status(200).json({
